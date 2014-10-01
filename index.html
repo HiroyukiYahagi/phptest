@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>comet test</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+
+		<script>
+			jQuery(function($) {
+			  var $view = $('#view'),
+			      $data = $('input[name="data"]');
+
+			  /**
+			   * データ取得
+			   */
+			  function getData() {
+			    $.post('comet.php?mode=view', {}, function(data) {
+			      $view.html(data);
+			      checkUpdate();
+			    });
+			  }
+
+			  /**
+			   * 更新チェック
+			   */
+			  function checkUpdate() {
+			    $.post('comet.php?mode=check', {}, function(data) {
+			      $view.html(data);
+			      checkUpdate();
+			    });
+			  }
+
+			  $('#add').submit(function(event) {
+			    event.preventDefault();
+			    $.post('comet.php?mode=add', {data: $data.val()}, function(data) {
+			      $data.val('');
+			    });
+			  });
+
+			  getData();
+			});
+		</script>
+
+	</head>
+	<body>
+
+		<dl>
+  			<dt>data<dt>
+ 			<dd id="view">data is here.</dd>
+		</dl>
+
+		<form id="add" action="comet.php?mode=add" method="post">
+  			<input type="text" name="data" value="" />
+ 			<input type="submit" value="Add" />
+		</form>
+
+	</body>
+</html>
