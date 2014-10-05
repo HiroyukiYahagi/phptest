@@ -13,7 +13,10 @@
 
     <script type="text/javascript">
       function answered(ans_num){
-        window.location.href="answer.php?employeeId=" + <?php echo $_GET['employeeId']; ?> + "&answer_num=" + ans_num + "&employeeName=" + <?php echo $_GET['employeeName']; ?> ;
+        //window.location.href="answer.php?employeeId=" + <?php echo $_GET['employeeId']; ?> + "&answer_num=" + ans_num + "&employeeName=" + <?php echo $_GET['employeeName']; ?> ;
+        
+        //$var = <?php echo $_GET['question_num'] ?>;
+        window.location.href="answer.php?employeeId=" + <?php echo $_GET['employeeId']; ?> + "&answer_num=" + ans_num + "&questionId=1";
       }
     </script>
 
@@ -30,7 +33,7 @@
     <!-- メッセージ -->
     <div class="row">
       <div class="col-md-4 col-md-offset-4">
-          <h5 id="message">第<?php echo $_GET['question_num'] ?>問</h5>
+          <h5 id="message">第<?php echo $_GET['questionId'] ?>問</h5>
       </div>
     </div>
 

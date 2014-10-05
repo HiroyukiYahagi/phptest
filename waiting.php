@@ -20,7 +20,7 @@
          * データ取得
          */
         function getData() {
-          $.post('comet.php?mode=view', {}, function(data) {
+          $.post('goToNext.php?mode=view', {}, function(data) {
             //$view.html(data);
             checkUpdate();
           });
@@ -30,9 +30,9 @@
          * 更新チェック
          */
         function checkUpdate() {
-          $.post('comet.php?mode=check', {}, function(data) {
+          $.post('goToNext.php?mode=check', {}, function(data) {
             //var $buffer = '&employeeName=' + <?php echo $_GET['employeeName']; ?> ;
-            window.location.href = 'question.php?employeeId=' + <?php echo $_GET['employeeId']; ?>;
+            window.location.href = 'question.php?employeeId=' + <?php echo $_GET['employeeId']; ?> + '&questionId=' + data;
             //window.location.href = 'question.php';
             checkUpdate();
           });
@@ -61,13 +61,6 @@
       </div>
     </div>
 
-
-    <!-- ステータス -->
-    <div class="row">
-      <div class="col-md-4 col-md-offset-4">
-          <h5 id="view">aaaaaa</h5>
-      </div>
-    </div>
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

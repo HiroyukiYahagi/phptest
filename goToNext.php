@@ -37,7 +37,7 @@ function pushData($data) {
 	if (!empty($data)) {
 		$data = str_replace(array("\n", "\r"), '', $data)
 				. ' [' . date('c') . ']' . PHP_EOL;
-		file_put_contents(DATA_FILE, $data, FILE_APPEND|LOCK_EX);
+		file_put_contents(DATA_FILE, $data, LOCK_EX);
 	}
 	return getData();
 }
